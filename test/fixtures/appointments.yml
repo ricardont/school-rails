@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  student_id: 1
+  teacher_id: 1
+  date_time_start: 2019-10-21 23:23:00
+  date_time_end: 2019-10-21 23:23:00
+  dow_name: MyString
+  dow_number: 1
+  enabled: false
+  attendance_flag: false
+  type: 
+
+two:
+  user_id: 1
+  student_id: 1
+  teacher_id: 1
+  date_time_start: 2019-10-21 23:23:00
+  date_time_end: 2019-10-21 23:23:00
+  dow_name: MyString
+  dow_number: 1
+  enabled: false
+  attendance_flag: false
+  type: 

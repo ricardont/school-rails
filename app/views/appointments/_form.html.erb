@@ -1,0 +1,67 @@
+<%= form_with(model: appointment, local: true) do |form| %>
+  <% if appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.number_field :student_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teacher_id %>
+    <%= form.number_field :teacher_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_time_start %>
+    <%= form.datetime_select :date_time_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_time_end %>
+    <%= form.datetime_select :date_time_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dow_name %>
+    <%= form.text_field :dow_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dow_number %>
+    <%= form.number_field :dow_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enabled %>
+    <%= form.check_box :enabled %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attendance_flag %>
+    <%= form.check_box :attendance_flag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :appointment_type %>
+    <%= form.text_field :appointment_type %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

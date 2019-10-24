@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @appointment.user_id %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @appointment.student_id %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @appointment.teacher_id %>
+</p>
+
+<p>
+  <strong>Date time start:</strong>
+  <%= @appointment.date_time_start %>
+</p>
+
+<p>
+  <strong>Date time end:</strong>
+  <%= @appointment.date_time_end %>
+</p>
+
+<p>
+  <strong>Dow name:</strong>
+  <%= @appointment.dow_name %>
+</p>
+
+<p>
+  <strong>Dow number:</strong>
+  <%= @appointment.dow_number %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @appointment.enabled %>
+</p>
+
+<p>
+  <strong>Attendance flag:</strong>
+  <%= @appointment.attendance_flag %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @appointment.appointment_type %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>
