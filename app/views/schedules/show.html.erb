@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @schedule.user_id %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @schedule.student_id %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @schedule.teacher_id %>
+</p>
+
+<p>
+  <strong>Date time start:</strong>
+  <%= @schedule.date_time_start %>
+</p>
+
+<p>
+  <strong>Date time end:</strong>
+  <%= @schedule.date_time_end %>
+</p>
+
+<p>
+  <strong>Dow number:</strong>
+  <%= @schedule.dow_number %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>
