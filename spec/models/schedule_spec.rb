@@ -18,7 +18,7 @@ RSpec.describe Schedule, type: :model do
         date_time_end:date_time_end ).save
       expect(Schedule.count).to eq(0)	
     end
-    it 'If end date/time not provided, set one hour after by default', type: :current do
+    it 'If end date/time not provided, set one hour after by default' do
       date_time_start = "2019-05-05 14:00:00"
       Schedule.create(
         user_id:1,
@@ -26,14 +26,39 @@ RSpec.describe Schedule, type: :model do
         teacher_id:2,
         date_time_start:date_time_start ).save
       date_time_end = Schedule.first.date_time_end
-      p date_time_end
       expect(date_time_end).to eq("2019-05-05 15:00:00")	
     end
-    it 'Not allow save with past dates' do
+    it 'Dow number only must be from 1 to 7, error' do
+      date_time_start = "2019-05-05 14:00:00"
+      Schedule.create(
+        user_id:1,
+        student_id:1,
+        teacher_id:2,
+        date_time_start:date_time_start,
+        dow_number:8 ).save
+      Schedule.create(
+          user_id:1,
+          student_id:1,
+          teacher_id:2,
+          date_time_start:date_time_start,
+          dow_number:0 ).save
+          expect(Schedule.count).to eq(0)    
     end
-    it 'If use date not allow dow ' do
-    end
-    it 'If use dow, date start and end must be 0' do
+    it 'Dow number only must be from 1 to 7, success' do
+      date_time_start = "2019-05-05 14:00:00"
+      Schedule.create(
+        user_id:1,
+        student_id:1,
+        teacher_id:2,
+        date_time_start:date_time_start,
+        dow_number:7 ).save
+      Schedule.create(
+          user_id:1,
+          student_id:1,
+          teacher_id:2,
+          date_time_start:date_time_start,
+          dow_number:3 ).save
+      expect(Schedule.count).to eq(2)    
     end
   end
 end

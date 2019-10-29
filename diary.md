@@ -20,3 +20,7 @@ ssh```
 ctr shift up/down arrow
 ###edit shortcuts
 
+##model validations
+#dow_number only restrict 1 to 7
+   validates_inclusion_of :dow_number, :in => 1..7
+
