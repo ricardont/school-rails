@@ -1,7 +1,9 @@
 class Schedule < ApplicationRecord
-   validates :user_id, :teacher_id, :student_id, :date_time_start, :presence => true
+   validates :user_id, :student_id, :date_time_start, :presence => true
    validate :dates_limit, :dow_accepted_values
    before_create :set_default_time_end
+   belongs_to :teacher
+   belongs_to :student
    private
    def dates_limit
 	  if self.date_time_end != nil && self.date_time_start.to_f > self.date_time_end.to_f

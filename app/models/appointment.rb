@@ -2,6 +2,8 @@ class Appointment < ApplicationRecord
 	validates :user_id, :teacher_id, :student_id, :date_time_start, :date_time_end, :presence => true
 	validate :dates_limit
 	before_create :validate_dow_name, :validate_dow_number
+	belongs_to :teacher
+	belongs_to :student
 	private 
 	def validate_dow_name
 		if  self.dow_name == nil 

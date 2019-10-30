@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_000334) do
+ActiveRecord::Schema.define(version: 2019_10_30_045037) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "user_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_000334) do
     t.integer "dow_number"
     t.boolean "enabled"
     t.boolean "attendance_flag"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "appointment_type"
@@ -34,6 +35,17 @@ ActiveRecord::Schema.define(version: 2019_10_30_000334) do
     t.datetime "date_time_start"
     t.datetime "date_time_end"
     t.integer "dow_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "first_name"
+    t.text "last_name"
+    t.integer "age"
+    t.integer "phone"
+    t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
