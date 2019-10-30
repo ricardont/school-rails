@@ -24,3 +24,6 @@ ctr shift up/down arrow
 #dow_number only restrict 1 to 7
    validates_inclusion_of :dow_number, :in => 1..7
 
+#MIGRATONS
+run specific migration
+rails db:migrate:up VERSION=20191030000334
