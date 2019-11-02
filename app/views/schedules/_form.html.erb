@@ -1,4 +1,4 @@
-<%= form_with(model: schedule, local: true) do |form| %>
+<%= bootstrap_form_for(model: schedule, local: true) do |form| %>
   <% if schedule.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :user_id %>
     <%= form.number_field :user_id %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :student_id %>
     <%= form.number_field :student_id %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :teacher_id %>
     <%= form.number_field :teacher_id %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :date_time_start %>
     <%= form.datetime_select :date_time_start %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :date_time_end %>
     <%= form.datetime_select :date_time_end %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :dow_number %>
     <%= form.number_field :dow_number %>
   </div>
