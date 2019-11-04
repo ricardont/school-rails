@@ -7,7 +7,6 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.integer :age
       t.integer :phone
       t.text :address
-
       t.timestamps
     end
   end
