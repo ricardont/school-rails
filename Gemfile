@@ -45,7 +45,7 @@ group :development, :test do
   gem 'rspec'
   gem 'sqlite3'
 end
-
+gem 'jquery-datatables'
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'

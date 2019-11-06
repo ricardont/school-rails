@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Student.destroy_all
+Teacher.destroy_all
+Schedule.destroy_all
+Appointment.destroy_all
 20.times do |i|
     user_id = rand(1..3)
     name  =  Faker::Name.unique.name
@@ -25,7 +29,7 @@
     end
     student_id = Student.all.ids.sample
     teacher_id = Teacher.all.ids.sample
-    date_time_start = Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 20, period: :afternoon).beginning_of_hour
+    date_time_start = Faker::Time.between_dates(from: Date.today, to: Date.today + 20, period: :afternoon).beginning_of_hour
     dow_number = rand(1..5)
     if rand(1..2) == 1
         schedule = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
