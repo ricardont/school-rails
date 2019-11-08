@@ -1,0 +1,73 @@
+<div class="table-responsive-md">
+<table id="tblx" class="  table table-sm table-striped table-bordered" cellspacing="0" width="100%" style="margins:auto;">
+        <thead class="thead-light">
+            <tr>
+                <th>Terapeuta</th>
+                <th>Hora</th>
+                <th>Alumno</th>
+                <th>Actividad</th>
+                <th>Vino</th>
+                <th>Avisó</th>
+                <th>Efectivo</th>
+                <th>Dep. Ins.</th>
+                <th>Dep. V</th>
+                <th>Monto</th>
+                <th>Notas</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>    
+                <th>Terapeuta</th>
+                <th>Hora</th>
+                <th>Alumno</th>
+                <th>Actividad</th>
+                <th>Vino</th>
+                <th>Avisó</th>
+                <th>Efectivo</th>
+                <th>Dep. Ins.</th>
+                <th>Dep. V</th>
+                <th>Monto</th>
+                <th>Notas</th>
+            </tr>
+        </tfoot>
+        <tbody> 
+            <% @events.map do |schedule| %>
+                <tr>
+                    <% teacher = Teacher.find(schedule.teacher_id) %>
+                    <% student = Student.find(schedule.student_id) %>
+                    <td> <%= "#{teacher.first_name} #{teacher.last_name}" %> </td>
+                    <td> <strong><%= schedule.date_time_start.strftime("%H:%M").to_s %></strong></td>
+                    <td> <%= "#{student.first_name} #{student.last_name}" %> </td>
+                    <td > <input class="form-control" type="text" placeholder="..."> </td>
+                    <td>  
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  id="assistChbox">                           
+                        </div>
+                    </td>
+                    <td>  
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  id="noticeChbox">                           
+                        </div>
+                    </td>
+                    <td>  
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  id="cashChbox">                           
+                        </div>
+                    </td>
+                    <td>  
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  id="payCashvChbox">                           
+                        </div>
+                    </td>
+                    <td>  
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  id="depvChbox">                           
+                        </div>
+                    </td> 
+                    <td><input class="form-control" type="number" width=50 min="10.0" max="10000.00" step="10.0" id="payAmountChbox" placeholder="$0.00"> </td>
+                    <td><p style=" font-size: 0.8em; word-wrap: break-word;">Bla bla</p> </td>
+                </tr>
+            <% end %>
+        </tbody>
+</table>
+</div>

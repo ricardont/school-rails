@@ -4,7 +4,12 @@ class Schedule < ApplicationRecord
    before_create :set_default_time_end
    belongs_to :teacher
    belongs_to :student
-   scope :date_range, lambda {|start_date, end_date| where("date_time_start >= ? AND end_time_start < ?", start_date, end_date )}
+   scope :range, -> (params={}) {
+       start_date = params[:start_date].nil?  ? DateTime.now.beginning_of_day : params[:start_date] 
+       end_date = params[:end_date].nil? ? DateTime.now.end_of_day : params[:end_date] 
+       where("date_time_start >= ? AND date_time_end <= ?", start_date, end_date )
+   }
+
    private
    def dates_limit
 	  if self.date_time_end != nil && self.date_time_start.to_f > self.date_time_end.to_f
@@ -21,4 +26,5 @@ class Schedule < ApplicationRecord
 		  errors.add(:dow_number, 'Day of week number out of range (1-7)')
 	  end
    end
+
 end

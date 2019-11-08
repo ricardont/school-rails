@@ -9,7 +9,7 @@ Student.destroy_all
 Teacher.destroy_all
 Schedule.destroy_all
 Appointment.destroy_all
-20.times do |i|
+200.times do |i|
     user_id = rand(1..3)
     name  =  Faker::Name.unique.name
     first_name = name.split(' ')[0] 

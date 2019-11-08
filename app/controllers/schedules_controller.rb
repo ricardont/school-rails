@@ -7,6 +7,10 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
+  def day 
+    @events = Schedule.range(date_range_params) 
+  end
+
   # GET /schedules/1
   # GET /schedules/1.json
   def show
@@ -25,7 +29,6 @@ class SchedulesController < ApplicationController
   # POST /schedules.json
   def create
     @schedule = Schedule.new(schedule_params)
-
     respond_to do |format|
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
@@ -70,5 +73,8 @@ class SchedulesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
       params.require(:schedule).permit(:user_id, :student_id, :teacher_id, :date_time_start, :date_time_end, :dow_number)
+    end
+    def date_range_params
+      params.permit(:start_date, :end_date)
     end
 end
