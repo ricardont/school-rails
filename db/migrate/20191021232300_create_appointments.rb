@@ -10,7 +10,7 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.integer :dow_number
       t.boolean :enabled
       t.boolean :attendance_flag
-      t.string :type
+      t.string :appointment_type
       t.timestamps
     end
   end
