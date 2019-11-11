@@ -4,12 +4,15 @@ class Schedule < ApplicationRecord
    before_create :set_default_time_end
    belongs_to :teacher
    belongs_to :student
-   scope :range, -> (params={}) {
-       start_date = params[:start_date].nil?  ? DateTime.now.beginning_of_day : params[:start_date] 
-       end_date = params[:end_date].nil? ? DateTime.now.end_of_day : params[:end_date] 
+   scope :range, -> (date_range={}) {
+       start_date = date_range[:start_date].nil?  ? DateTime.now.beginning_of_day : date_range[:start_date] 
+       end_date = date_range[:end_date].nil? ? DateTime.now.end_of_day : date_range[:end_date] 
+       
        where("date_time_start >= ? AND date_time_end <= ?", start_date, end_date )
    }
-
+   def get_dow_dates date_range = {} dow_nums = []
+      in Schedule nums
+   end
    private
    def dates_limit
 	  if self.date_time_end != nil && self.date_time_start.to_f > self.date_time_end.to_f
