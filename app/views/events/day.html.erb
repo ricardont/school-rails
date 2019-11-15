@@ -1,5 +1,8 @@
-<div class="table-responsive-md">
-<table id="tblx" class="  table table-sm table-striped table-bordered" cellspacing="0" width="100%" style="margins:auto;">
+<div class="table-responsive-md">   
+<% date_header = @start_date == nil ? DateTime.now : @start_date.to_date %>   
+<% header = @start_date == nil ?  ' de Hoy' :  ": #{date_header}" %>    
+<h3><%= "Registro Diario#{header}" %></h3>
+<table id="tblx" class="  table table-sm table-striped table-bordered" cellspacing="0" width="100%" style="margin:auto;">
         <thead class="thead-light">
             <tr>
                 <th>Terapeuta</th>

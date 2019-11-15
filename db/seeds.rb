@@ -32,7 +32,7 @@ Appointment.destroy_all
     date_time_start = Faker::Time.between_dates(from: Date.today, to: Date.today + 20, period: :afternoon).beginning_of_hour
     dow_number = rand(1..5)
     if rand(1..2) == 1
-        schedule = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
+        schedule   = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
                                        date_time_start: date_time_start,  dow_number: dow_number)   
     else
         schedule = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
