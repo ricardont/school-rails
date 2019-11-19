@@ -4,9 +4,10 @@ class Schedule < ApplicationRecord
    before_create :set_default_time_end, :set_date_zero
    belongs_to :teacher
    belongs_to :student
+   has_many :appointments
    scope :range, -> (date_range={}) {
-      start_date = date_range[:start_date].nil?  ? DateTime.now.beginning_of_day : date_range[:start_date] 
-      end_date   = date_range[:end_date].nil? ? DateTime.now.end_of_day : date_range[:end_date] 
+      start_date = date_range[:start_date].nil?  ? "#{DateTime.now.to_date} 00:00:00" : date_range[:start_date] 
+      end_date   = date_range[:end_date].nil? ? "#{DateTime.now.to_date} 23:59:59" : date_range[:end_date] 
       wday_nums  = (start_date.to_date .. end_date.to_date).map { |d|
          d.to_date.wday == 0 ? 7 : d.to_date.wday
       }    
@@ -16,6 +17,7 @@ class Schedule < ApplicationRecord
    def set_date_zero
       unless [1..7,nil].include?(self.dow_number)
          self.date_time_start = "0001-01-01 #{date_time_start.strftime("%H:%M:%S")}"
+         self.date_time_end = "0001-01-01 #{date_time_end.strftime("%H:%M:%S")}"
       end
    end
    def dates_limit
