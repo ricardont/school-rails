@@ -6,7 +6,11 @@ add proxy
 export https_proxy="https://lkdsajfdsa:8080"
 export http_proxy="http://;dslfdsa;lk:8080"
 
+#git
+##unset proxy
+git config --global --unset https.proxy
 ###Working with date time 
+I set invalid date when a dow value is submitted in 
  compare dates, convert to float >> self.date_time_start.to_f 
  ssh```
  self.date_time_start.to_f > self.date_time_end.to_f
@@ -19,7 +23,8 @@ export http_proxy="http://;dslfdsa;lk:8080"
 ####Duplicate line
 ctr shift up/down arrow
 ####edit shortcuts
-
+##dates
+I
 ###how add cmder as default terminal 
 ctrl + k, this will open the settings json edit, and add the folliwng
 
@@ -29,6 +34,9 @@ ctrl + k, this will open the settings json edit, and add the folliwng
 replace init.bat directory with your current cmder folder
 
 ###VAGRANT
+ 
+add this to vagrant file:
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
 
 
 ###model validations

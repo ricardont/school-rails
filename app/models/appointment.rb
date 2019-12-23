@@ -4,6 +4,12 @@ class Appointment < ApplicationRecord
 	before_create :validate_dow_name, :validate_dow_number
 	belongs_to 	  :teacher
 	belongs_to    :student
+	belongs_to    :schedule
+	scope :range, -> (date_range={}) {
+		start_date = date_range[:start_date].nil?  ? "#{DateTime.now.to_date} 00:00:00" : date_range[:start_date] 
+		end_date   = date_range[:end_date].nil? ? "#{DateTime.now.to_date} 23:59:59" : date_range[:end_date] 
+		where("date_time_start >= ? AND date_time_end <= ?", start_date, end_date)
+	 }
 	private 
 	def validate_dow_name
 		if  self.dow_name == nil 

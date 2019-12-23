@@ -29,23 +29,34 @@ Appointment.destroy_all
     end
     student_id = Student.all.ids.sample
     teacher_id = Teacher.all.ids.sample
-    date_time_start = Faker::Time.between_dates(from: Date.today, to: Date.today + 20, period: :afternoon).beginning_of_hour
+    date_time_start = Faker::Time.between_dates(from: Date.today, to: Date.today + 20, period: :morning).beginning_of_hour
     dow_number = rand(1..5)
     if rand(1..2) == 1
-        schedule = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
+        schedule   = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
                                        date_time_start: date_time_start,  dow_number: dow_number)   
     else
         schedule = Schedule.create!(user_id:user_id, student_id: student_id, teacher_id: teacher_id, 
                                 date_time_start: date_time_start  )    
     end    
     schedule.save!
-    date_time_start_app = Faker::Time.between_dates(from: Date.today - 1, to: Date.today - 20, period: :afternoon).beginning_of_hour
-    date_time_end_app= date_time_start_app + 3600
-    attendance_flag= [true, false].sample
-    types=["Evaluacion", "Diagnostico", "Terapia"]
-    type=types.sample 
-    appointment = Appointment.create!(
-        user_id:user_id, student_id:student_id, teacher_id:teacher_id, date_time_start:date_time_start_app,
-        date_time_end:date_time_end_app, attendance_flag:attendance_flag, appointment_type:type )
-    appointment.save!
 end 
+
+dow_scheduled =  Schedule.where.not(dow_number: nil)
+((Time.now.to_date - 30 ) ... (Time.now.to_date)).map { |d|
+    dow_number = d.wday == 0 ? 7 : d.wday 
+    dow_scheduled.where(dow_number: dow_number).map { |s| 
+        attendance_flag= [true, false].sample
+        types=["Evaluacion", "Diagnostico", "Terapia"]
+        type=types.sample 
+        date_time_start = "#{d.to_date} #{s.date_time_start.strftime("%H:%M:%S")}" 
+        date_time_end   = "#{d.to_date} #{s.date_time_end.strftime("%H:%M:%S")}" 
+        p date_time_start
+        p date_time_end
+        p '================================================================'
+        appointment = Appointment.create!(
+            user_id: s.user_id, student_id: s.student_id, schedule_id: s.id, teacher_id:s.teacher_id, date_time_start:date_time_start,
+            date_time_end:date_time_end, attendance_flag:attendance_flag, appointment_type:type, notes: Faker::Quote.yoda )
+        appointment.save!
+    }
+}
+

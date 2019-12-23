@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>User</th>
+      <th>Teacher</th>  
       <th>Student</th>
-      <th>Teacher</th>
       <th>Date time start</th>
       <th>Date time end</th>
       <th>Dow number</th>
@@ -18,9 +18,11 @@
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
+        <% teacher = Teacher.find(schedule.teacher_id) %>
+        <% student = Student.find(schedule.student_id) %>
         <td><%= schedule.user_id %></td>
-        <td><%= schedule.student_id %></td>
-        <td><%= schedule.teacher_id %></td>
+        <td> <%= "#{teacher.first_name} #{teacher.last_name}" %> </td>
+        <td> <%= "#{student.first_name} #{student.last_name}" %> </td>
         <td><%= schedule.date_time_start %></td>
         <td><%= schedule.date_time_end %></td>
         <td><%= schedule.dow_number %></td>
