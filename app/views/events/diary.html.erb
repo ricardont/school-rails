@@ -1,11 +1,5 @@
-<div class="table-responsive-md">   
-<% start_date = @start_date == nil ? DateTime.now : @start_date.to_date %>
-<% end_date   = @end_date == nil ? DateTime.now : @end_date.to_date%>
-<% mult_days_flag = (start_date - end_date) > 0 ? 1 :0 %>
-<% date_header = @start_date == nil ? DateTime.now : start_date.to_date %>
-<% date_header_end = mult_days_flag == 1 ? "a #{end_date}" : "" %>   
-<% header = @start_date == nil ?  " de Hoy" :  ": #{date_header} #{date_header_end}" %>    
-<h3><%= "Registro Diario#{header}" %></h3>
+<div class="table-responsive-md">      
+<h3><%= @header_dates %></h3>
 <table id="tblx" class="  table table-sm table-striped table-bordered" cellspacing="0" width="100%" style="margin:auto;">
         <thead class="thead-light">
             <tr>
